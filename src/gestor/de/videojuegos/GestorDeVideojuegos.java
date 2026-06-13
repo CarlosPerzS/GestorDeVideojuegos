@@ -4,6 +4,8 @@
  */
 package gestor.de.videojuegos;
 
+import view.frmLogin;
+
 /**
  *
  * @author CARLO
@@ -14,7 +16,8 @@ public class GestorDeVideojuegos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        frmLogin ventana = new frmLogin();
+        ventana.setVisible(true);
     }
     
 }
