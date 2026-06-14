@@ -28,21 +28,135 @@ public class frmHistorial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaProductos = new javax.swing.JTable();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
+        Toolbar = new javax.swing.JPanel();
+        btnUsuario = new javax.swing.JButton();
+        lblLogo = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        TablaProductos.setBackground(new java.awt.Color(241, 236, 224));
+        TablaProductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "PRODUCTO", "CLIENTE", "TOTAL"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TablaProductos);
+
+        jLabel8.setBackground(new java.awt.Color(35, 57, 91));
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(35, 57, 91));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("HISTORIAL GENERAL");
+
+        Toolbar.setBackground(new java.awt.Color(35, 57, 91));
+
+        btnUsuario.setBackground(new java.awt.Color(35, 57, 91));
+        btnUsuario.setForeground(new java.awt.Color(35, 57, 91));
+        btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
+        btnUsuario.setBorder(null);
+        btnUsuario.setBorderPainted(false);
+        btnUsuario.setFocusPainted(false);
+        btnUsuario.setFocusTraversalPolicyProvider(true);
+        btnUsuario.addActionListener(this::btnUsuarioActionPerformed);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoGris.png"))); // NOI18N
+
+        jLabel9.setBackground(new java.awt.Color(35, 57, 91));
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(94, 117, 158));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("~ADMINISTRADOR~");
+
+        javax.swing.GroupLayout ToolbarLayout = new javax.swing.GroupLayout(Toolbar);
+        Toolbar.setLayout(ToolbarLayout);
+        ToolbarLayout.setHorizontalGroup(
+            ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToolbarLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUsuario)
+                .addGap(51, 51, 51))
+        );
+        ToolbarLayout.setVerticalGroup(
+            ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ToolbarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToolbarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel9))
+                    .addComponent(btnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(Toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(494, 494, 494))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel8)
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
+        //jPopupMenu1.show(btnUsuario, 0, btnUsuario.getHeight());
+    }//GEN-LAST:event_btnUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +184,13 @@ public class frmHistorial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaProductos;
+    private javax.swing.JPanel Toolbar;
+    private javax.swing.JButton btnUsuario;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
 }

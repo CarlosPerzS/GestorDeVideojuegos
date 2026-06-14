@@ -114,12 +114,15 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
 
         btnUsuario.setBackground(new java.awt.Color(35, 57, 91));
         btnUsuario.setForeground(new java.awt.Color(35, 57, 91));
+        btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
         btnUsuario.setBorder(null);
         btnUsuario.setBorderPainted(false);
         btnUsuario.setComponentPopupMenu(jPopupMenu1);
         btnUsuario.setFocusPainted(false);
         btnUsuario.setFocusTraversalPolicyProvider(true);
         btnUsuario.addActionListener(this::btnUsuarioActionPerformed);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoGris.png"))); // NOI18N
 
         jLabel9.setBackground(new java.awt.Color(35, 57, 91));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 20)); // NOI18N
@@ -131,33 +134,28 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         Toolbar.setLayout(ToolbarLayout);
         ToolbarLayout.setHorizontalGroup(
             ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToolbarLayout.createSequentialGroup()
+            .addGroup(ToolbarLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
-            .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToolbarLayout.createSequentialGroup()
-                    .addContainerGap(1275, Short.MAX_VALUE)
-                    .addComponent(jLabel9)
-                    .addGap(100, 100, 100)))
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(btnUsuario)
+                .addGap(30, 30, 30))
         );
         ToolbarLayout.setVerticalGroup(
             ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ToolbarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                     .addGroup(ToolbarLayout.createSequentialGroup()
-                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 3, Short.MAX_VALUE))
-                    .addComponent(btnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToolbarLayout.createSequentialGroup()
-                    .addContainerGap(27, Short.MAX_VALUE)
-                    .addComponent(jLabel9)
-                    .addGap(7, 7, 7)))
+                        .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(ToolbarLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel9)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         btnAgregarConsola.setBackground(new java.awt.Color(5, 18, 35));
@@ -172,6 +170,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         btnAgregarVideojuego.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarVideojuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas.png"))); // NOI18N
         btnAgregarVideojuego.setText("Agregar Videojuego");
+        btnAgregarVideojuego.setIconTextGap(5);
         btnAgregarVideojuego.addActionListener(this::btnAgregarVideojuegoActionPerformed);
 
         TablaProductos.setBackground(new java.awt.Color(241, 236, 224));
@@ -225,18 +224,17 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(552, 552, 552)
-                                .addComponent(btnAgregarConsola, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(454, 454, 454)
+                                .addComponent(btnAgregarConsola, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(77, 77, 77)
-                                .addComponent(btnAgregarVideojuego, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnAgregarVideojuego, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(657, 657, 657)
-                                .addComponent(jLabel8)))
-                        .addGap(0, 538, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(164, 164, 164)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 173, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -249,7 +247,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(Toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAgregarConsola, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                     .addComponent(btnAgregarVideojuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
