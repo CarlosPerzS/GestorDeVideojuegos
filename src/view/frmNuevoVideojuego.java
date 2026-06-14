@@ -4,9 +4,11 @@
  */
 package view;
 
+import EstructurasDeDatos.ListaVideojuegos;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import model.Videojuego;
 
 /**
  *
@@ -15,7 +17,8 @@ import javax.swing.ImageIcon;
 public class frmNuevoVideojuego extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmNuevoVideojuego.class.getName());
-
+    private ListaVideojuegos listaVideojuegos = new ListaVideojuegos();
+    private static int contadorId = 1;
     /**
      * Creates new form frmNuevaConsola
      */
@@ -222,26 +225,80 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
         jLabel16.setText("STOCK DISPONIBLE:");
 
         jcbClasifiacion.setForeground(new java.awt.Color(77, 100, 141));
-        jcbClasifiacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbClasifiacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A ", "B ", "B15", "C" }));
         jcbClasifiacion.addActionListener(this::jcbClasifiacionActionPerformed);
+        jcbClasifiacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jcbClasifiacionKeyPressed(evt);
+            }
+        });
 
         jtfPrecio.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfPrecio.setForeground(new java.awt.Color(35, 57, 91));
+        jtfPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfPrecioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPrecioKeyTyped(evt);
+            }
+        });
 
         jtfNombre.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfNombre.setForeground(new java.awt.Color(35, 57, 91));
+        jtfNombre.addActionListener(this::jtfNombreActionPerformed);
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyTyped(evt);
+            }
+        });
 
         jtfFechaLanzamiento.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfFechaLanzamiento.setForeground(new java.awt.Color(35, 57, 91));
+        jtfFechaLanzamiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfFechaLanzamientoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfFechaLanzamientoKeyTyped(evt);
+            }
+        });
 
         jtfGenero.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfGenero.setForeground(new java.awt.Color(35, 57, 91));
+        jtfGenero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfGeneroKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfGeneroKeyTyped(evt);
+            }
+        });
 
         jtfPlataforma.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfPlataforma.setForeground(new java.awt.Color(35, 57, 91));
+        jtfPlataforma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfPlataformaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPlataformaKeyTyped(evt);
+            }
+        });
 
         jtfStock.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfStock.setForeground(new java.awt.Color(35, 57, 91));
+        jtfStock.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfStockKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfStockKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel2Layout = new javax.swing.GroupLayout(Panel2);
         Panel2.setLayout(Panel2Layout);
@@ -393,22 +450,52 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
-        if (jtfNombre.getText().trim().isEmpty() || 
-            jtfPrecio.getText().trim().isEmpty() || 
-            jtfGenero.getText().trim().isEmpty() || 
-            jtfFechaLanzamiento.getText().trim().isEmpty() || 
-            jtfPlataforma.getText().trim().isEmpty() || 
-            jtfStock.getText().trim().isEmpty()) {
-            
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                    "Por favor, llene todos los campos antes de añadir el videojuego.", 
-                    "Campos Vacíos", 
+        if (jtfNombre.getText().trim().isEmpty()
+                || jtfPrecio.getText().trim().isEmpty()
+                || jtfGenero.getText().trim().isEmpty()
+                || jtfFechaLanzamiento.getText().trim().isEmpty()
+                || jtfPlataforma.getText().trim().isEmpty()
+                || jtfStock.getText().trim().isEmpty()) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Por favor, llene todos los campos antes de añadir el videojuego.",
+                    "Campos Vacios",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-        else {
-            // Aqui que mande los datoa a donde sea que se cree la lista de juegos
+
+        try {
+            String nombre = jtfNombre.getText().trim();
+            double precio = Double.parseDouble(jtfPrecio.getText().trim().replace(",", "."));
+            String genero = jtfGenero.getText().trim();
+            String fechaLanzamiento = jtfFechaLanzamiento.getText().trim();
+            String plataforma = jtfPlataforma.getText().trim();
+            int stock = Integer.parseInt(jtfStock.getText().trim());
+            String clasificacion = jcbClasifiacion.getSelectedItem().toString();
+
+            Videojuego v = new Videojuego(contadorId,clasificacion,genero,fechaLanzamiento,plataforma,contadorId,nombre,precio,stock,"Videojuego" );
+
+            listaVideojuegos.encolar(v);
+            contadorId++;
+
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "se agrego correctamente\n",
+                    "Agregar",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+            jtfNombre.setText("");
+            jtfPrecio.setText("");
+            jtfGenero.setText("");
+            jtfFechaLanzamiento.setText("");
+            jtfPlataforma.setText("");
+            jtfStock.setText("");
+            jcbClasifiacion.setSelectedIndex(0);
+
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Precio y Stock deben ser numeros validos",
+                    "Error de formato",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -421,6 +508,102 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
     private void jcbClasifiacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClasifiacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbClasifiacionActionPerformed
+
+    private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
+
+    }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfGeneroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfGeneroKeyTyped
+
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && c != ' '
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfGeneroKeyTyped
+
+    private void jtfNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfPrecio.requestFocus();
+        }
+    }//GEN-LAST:event_jtfNombreKeyPressed
+
+    private void jtfGeneroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfGeneroKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfFechaLanzamiento.requestFocus();
+        }
+    }//GEN-LAST:event_jtfGeneroKeyPressed
+
+    private void jtfPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPrecioKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '.'
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+        if (c == '.' && jtfPrecio.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfPrecioKeyTyped
+
+    private void jtfPrecioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPrecioKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jcbClasifiacion.requestFocus();
+        }
+    }//GEN-LAST:event_jtfPrecioKeyPressed
+
+    private void jcbClasifiacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcbClasifiacionKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfGenero.requestFocus();
+        }
+    }//GEN-LAST:event_jcbClasifiacionKeyPressed
+
+    private void jtfFechaLanzamientoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFechaLanzamientoKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfPlataforma.requestFocus();
+        }
+    }//GEN-LAST:event_jtfFechaLanzamientoKeyPressed
+
+    private void jtfStockKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfStockKeyPressed
+        
+    }//GEN-LAST:event_jtfStockKeyPressed
+
+    private void jtfFechaLanzamientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFechaLanzamientoKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '/'
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+        if (jtfFechaLanzamiento.getText().length() >= 10
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfFechaLanzamientoKeyTyped
+
+    private void jtfPlataformaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPlataformaKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && c != ' ' && c != '-'
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfPlataformaKeyTyped
+
+    private void jtfPlataformaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPlataformaKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfStock.requestFocus();
+        }
+    }//GEN-LAST:event_jtfPlataformaKeyPressed
+
+    private void jtfStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfStockKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfStockKeyTyped
+
+    private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNombreActionPerformed
 
     /**
      * @param args the command line arguments

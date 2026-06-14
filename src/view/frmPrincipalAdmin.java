@@ -288,11 +288,13 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
     private void btnAgregarConsolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarConsolaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnAgregarConsolaActionPerformed
 
     private void btnAgregarVideojuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVideojuegoActionPerformed
-        // TODO add your handling code here:
+        frmNuevoVideojuego ventana = new frmNuevoVideojuego();
+        ventana.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAgregarVideojuegoActionPerformed
 
     private void RegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarAdminActionPerformed

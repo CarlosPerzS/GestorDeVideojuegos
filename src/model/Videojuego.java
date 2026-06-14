@@ -10,12 +10,12 @@ package model;
  */
 public class Videojuego extends Producto{
     int id_Videojuego;
-    double clasificacionEdad;
+    String clasificacionEdad;
     String Genero;
     String FechaLanzamiento;
     String Plataforma;
 
-    public Videojuego(int id_Videojuego, double clasificacionEdad, String Genero, String FechaLanzamiento, String Plataforma, int id_Producto, String nombre, double precio, int StockDisponible, String tipo) {
+    public Videojuego(int id_Videojuego, String clasificacionEdad, String Genero, String FechaLanzamiento, String Plataforma, int id_Producto, String nombre, double precio, int StockDisponible, String tipo) {
         super(id_Producto, nombre, precio, StockDisponible, tipo);
         this.id_Videojuego = id_Videojuego;
         this.clasificacionEdad = clasificacionEdad;
@@ -35,11 +35,11 @@ public class Videojuego extends Producto{
         this.id_Videojuego = id_Videojuego;
     }
 
-    public double getClasificacionEdad() {
+    public String getClasificacionEdad() {
         return clasificacionEdad;
     }
 
-    public void setClasificacionEdad(double clasificacionEdad) {
+    public void setClasificacionEdad(String clasificacionEdad) {
         this.clasificacionEdad = clasificacionEdad;
     }
 
