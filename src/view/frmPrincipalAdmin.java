@@ -19,7 +19,8 @@ import javax.swing.table.JTableHeader;
 public class frmPrincipalAdmin extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmPrincipalAdmin.class.getName());
-
+    private java.util.List<Integer> idsEnTabla = new java.util.ArrayList<>();
+    private java.util.List<String> tiposEnTabla = new java.util.ArrayList<>();
     /**
      * Creates new form frmPrincipalAdmin
      */
@@ -62,6 +63,49 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         TablaProductos.setSelectionForeground(Color.WHITE);
         
         TablaProductos.getTableHeader().setReorderingAllowed(false);
+        
+        cargarTabla();
+    }
+    
+    public void cargarTabla() {
+        idsEnTabla.clear();
+        tiposEnTabla.clear();
+
+        javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(
+                new String[]{"PRODUCTO", "TIPO", "PRECIO", "STOCK"}, 0) {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
+
+        EstructurasDeDatos.ListaConsolas.Nodo auxC = model.catalogo.consolas.origen;
+        while (auxC != null) {
+            modelo.addRow(new Object[]{
+                auxC.dato.getNombre(),
+                "Consola",
+                "$" + auxC.dato.getPrecio(),
+                auxC.dato.getStockDisponible()
+            });
+            idsEnTabla.add(auxC.dato.getId_Consola());
+            tiposEnTabla.add("Consola");
+            auxC = auxC.siguiente;
+        }
+
+        EstructurasDeDatos.ListaVideojuegos.Nodo auxV = model.catalogo.videojuegos.cola;
+        while (auxV != null) {
+            modelo.addRow(new Object[]{
+                auxV.getValor().getNombre(),
+                "Videojuego",
+                "$" + auxV.getValor().getPrecio(),
+                auxV.getValor().getStockDisponible()
+            });
+            idsEnTabla.add(auxV.getValor().getId_Videojuego());
+            tiposEnTabla.add("Videojuego");
+            auxV = auxV.getAptSiguiente();
+        }
+
+        TablaProductos.setModel(modelo);
 
     }
 
@@ -205,11 +249,13 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         btnEliminar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(241, 236, 224));
         btnEliminar.setText("ELIMINAR");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         btnModificar.setBackground(new java.awt.Color(200, 157, 60));
         btnModificar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(241, 236, 224));
         btnModificar.setText("MODIFICAR");
+        btnModificar.addActionListener(this::btnModificarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -288,7 +334,9 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
     private void btnAgregarConsolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarConsolaActionPerformed
-        
+        frmNuevaConsola ventana = new frmNuevaConsola();
+        ventana.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAgregarConsolaActionPerformed
 
     private void btnAgregarVideojuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVideojuegoActionPerformed
@@ -315,6 +363,107 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_VerHistorialActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int fila = TablaProductos.getSelectedRow();
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Debes escoger un producto antes",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int id = idsEnTabla.get(fila);
+        String tipo = tiposEnTabla.get(fila);
+        String nombre = TablaProductos.getValueAt(fila, 0).toString();
+
+        int confirmar = javax.swing.JOptionPane.showConfirmDialog(this,
+                "¿Eliminar " + tipo + ": " + nombre + "?",
+                "Eliminacion",
+                javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (confirmar == javax.swing.JOptionPane.YES_OPTION) {
+            if (tipo.equals("Consola")) {
+                model.catalogo.consolas.eliminar(id);
+            } else {
+                model.catalogo.videojuegos.desencolar();
+            }
+            cargarTabla();
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    nombre + " eliminado correctamente.",
+                    "Eliminado",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        int fila = TablaProductos.getSelectedRow();
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Debes escoger un producto antes",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String tipo = tiposEnTabla.get(fila);
+        int id = idsEnTabla.get(fila);
+
+        if (tipo.equals("Consola")) {
+            String nuevoStockStr = javax.swing.JOptionPane.showInputDialog(this,
+                    "Nuevo stock disponible:",
+                    "Modificar Consola",
+                    javax.swing.JOptionPane.QUESTION_MESSAGE);
+
+            if (nuevoStockStr != null && !nuevoStockStr.trim().isEmpty()) {
+                try {
+                    int nuevoStock = Integer.parseInt(nuevoStockStr.trim());
+                    model.Consola c = model.catalogo.consolas.obtener(id);
+                    c.setStockDisponible(nuevoStock);
+                    cargarTabla();
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            "Stock actualizado correctamente",
+                            "Modificacion",
+                            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } catch (NumberFormatException e) {
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            "El stock debe ser un numero entero",
+                            "Error",
+                            javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            String nuevoStockStr = javax.swing.JOptionPane.showInputDialog(this,
+                    "Nuevo stock disponible:",
+                    "Modificar Videojuego",
+                    javax.swing.JOptionPane.QUESTION_MESSAGE);
+
+            if (nuevoStockStr != null && !nuevoStockStr.trim().isEmpty()) {
+                try {
+                    int nuevoStock = Integer.parseInt(nuevoStockStr.trim());
+                    EstructurasDeDatos.ListaVideojuegos.Nodo aux = model.catalogo.videojuegos.cola;
+                    while (aux != null) {
+                        if (aux.getValor().getId_Videojuego() == id) {
+                            aux.getValor().setStockDisponible(nuevoStock);
+                            break;
+                        }
+                        aux = aux.getAptSiguiente();
+                    }
+                    cargarTabla();
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            "Stock actualizado correctamente",
+                            "Modificacion",
+                            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } catch (NumberFormatException e) {
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            "El stock debe ser un número entero",
+                            "Error",
+                            javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments

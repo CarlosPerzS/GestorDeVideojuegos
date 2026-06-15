@@ -4,7 +4,6 @@
  */
 package view;
 
-import EstructurasDeDatos.ListaVideojuegos;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -17,8 +16,6 @@ import model.Videojuego;
 public class frmNuevoVideojuego extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmNuevoVideojuego.class.getName());
-    private ListaVideojuegos listaVideojuegos = new ListaVideojuegos();
-    private static int contadorId = 1;
     /**
      * Creates new form frmNuevaConsola
      */
@@ -473,10 +470,10 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
             int stock = Integer.parseInt(jtfStock.getText().trim());
             String clasificacion = jcbClasifiacion.getSelectedItem().toString();
 
-            Videojuego v = new Videojuego(contadorId,clasificacion,genero,fechaLanzamiento,plataforma,contadorId,nombre,precio,stock,"Videojuego" );
+            Videojuego v = new Videojuego(model.catalogo.contadorId,clasificacion,genero,fechaLanzamiento,plataforma,model.catalogo.contadorId,nombre,precio,stock,"Videojuego");
 
-            listaVideojuegos.encolar(v);
-            contadorId++;
+            model.catalogo.videojuegos.encolar(v);
+            model.catalogo.contadorId++;
 
             javax.swing.JOptionPane.showMessageDialog(this,
                     "se agrego correctamente\n",

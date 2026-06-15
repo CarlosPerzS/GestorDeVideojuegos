@@ -7,6 +7,7 @@ package view;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import model.Consola;
 
 /**
  *
@@ -69,6 +70,7 @@ public class frmNuevaConsola extends javax.swing.JFrame {
         RegistrarAdmin = new javax.swing.JMenuItem();
         VerHistorial = new javax.swing.JMenuItem();
         LogOut = new javax.swing.JMenuItem();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Toolbar = new javax.swing.JPanel();
         btnUsuario = new javax.swing.JButton();
@@ -220,10 +222,12 @@ public class frmNuevaConsola extends javax.swing.JFrame {
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel16.setText("STOCK DISPONIBLE:");
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(35, 57, 91));
         jRadioButton1.setText("SI");
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jRadioButton2.setForeground(new java.awt.Color(35, 57, 91));
         jRadioButton2.setText("NO");
@@ -410,7 +414,53 @@ public class frmNuevaConsola extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+        if (jtfNombre.getText().trim().isEmpty()
+                || jtfPrecio.getText().trim().isEmpty()
+                || jtfMarca.getText().trim().isEmpty()
+                || jtfAlmacenamiento.getText().trim().isEmpty()
+                || jtfColor.getText().trim().isEmpty()
+                || jtfStock.getText().trim().isEmpty()) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Debes llenar todos los campos",
+                    "Campos vacios",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            String nombre = jtfNombre.getText().trim();
+            double precio = Double.parseDouble(jtfPrecio.getText().trim().replace(",", "."));
+            String marca = jtfMarca.getText().trim();
+            int almacenamiento = Integer.parseInt(jtfAlmacenamiento.getText().trim());
+            String color = jtfColor.getText().trim();
+            int stock = Integer.parseInt(jtfStock.getText().trim());
+            boolean incluyeJuego = jRadioButton1.isSelected();
+
+            Consola c = new Consola(model.catalogo.contadorId,marca,almacenamiento,incluyeJuego,color,model.catalogo.contadorId,nombre,precio,stock,"Consola");
+
+            model.catalogo.consolas.agregar(c);
+            model.catalogo.contadorId++;
+
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Se agrego correctamente la consola",
+                    "Exito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+            jtfNombre.setText("");
+            jtfPrecio.setText("");
+            jtfMarca.setText("");
+            jtfAlmacenamiento.setText("");
+            jtfColor.setText("");
+            jtfStock.setText("");
+            jRadioButton1.setSelected(true);
+
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Precio y Stock deben ser numeros validos",
+                    "Error de formato",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+        }  
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -453,6 +503,7 @@ public class frmNuevaConsola extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnUsuario;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

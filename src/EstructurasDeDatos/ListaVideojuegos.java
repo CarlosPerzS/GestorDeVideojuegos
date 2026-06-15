@@ -12,8 +12,8 @@ import model.Videojuego;
  */
 public class ListaVideojuegos { //Cola
     public Nodo cola;
-    class Nodo {
-        private Videojuego valor;
+    public class Nodo {
+        public Videojuego valor;
         public Nodo aptSiguiente;
 
         public Nodo(Videojuego valor) {

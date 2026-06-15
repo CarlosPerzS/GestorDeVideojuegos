@@ -8,6 +8,19 @@
             <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmLogin.java</file>
             <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmNuevaConsola.java</file>
             <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmNuevoVideojuego.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmPrincipalAdmin.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Videojuego.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/EstructurasDeDatos/ListaVideojuegos.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Administrador.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/EstructurasDeDatos/ListaConsolas.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/AdministradorDAO.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Cliente.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/ClienteDAO.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Compra.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Consola.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/MetodoPago.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Producto.java</file>
+            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmPrincipalCliente.java</file>
         </group>
     </open-files>
 </project-private>
