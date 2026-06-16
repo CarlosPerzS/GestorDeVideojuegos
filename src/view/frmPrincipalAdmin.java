@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.JTableHeader;
+import model.Datos;
 
 /**
  *
@@ -27,6 +28,9 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
      */
     public frmPrincipalAdmin() {
         initComponents();
+        if (model.Datos.adminActual != null) {
+            nombre.setText(model.Datos.adminActual.getNombre());
+        }
         desktop.setOpaque(false);
         desktop.setBounds(0, 0, getWidth(), getHeight());
 
@@ -146,7 +150,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         Toolbar = new javax.swing.JPanel();
         btnUsuario = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
         btnAgregarConsola = new javax.swing.JButton();
         btnAgregarVideojuego = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -195,11 +199,10 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setBackground(new java.awt.Color(35, 57, 91));
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 20)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(94, 117, 158));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("~ADMINISTRADOR~");
+        nombre.setBackground(new java.awt.Color(35, 57, 91));
+        nombre.setFont(new java.awt.Font("Times New Roman", 2, 20)); // NOI18N
+        nombre.setForeground(new java.awt.Color(94, 117, 158));
+        nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout ToolbarLayout = new javax.swing.GroupLayout(Toolbar);
         Toolbar.setLayout(ToolbarLayout);
@@ -209,7 +212,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
+                .addComponent(nombre)
                 .addGap(18, 18, 18)
                 .addComponent(btnUsuario)
                 .addGap(30, 30, 30))
@@ -225,7 +228,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
                             .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(ToolbarLayout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addComponent(jLabel9)))
+                                .addComponent(nombre)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -411,8 +414,10 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
 
     private void VerHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerHistorialActionPerformed
         frmHistorial ventana = new frmHistorial();
+        desktop.add(ventana);
+        ventana.pack();
+        ventana.setLocation((desktop.getWidth() - ventana.getWidth()) / 2,(desktop.getHeight() - ventana.getHeight()) / 2);
         ventana.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_VerHistorialActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -560,11 +565,11 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnUsuario;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel nombre;
     // End of variables declaration//GEN-END:variables
 }

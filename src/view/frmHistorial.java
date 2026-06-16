@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  *
  * @author shari
  */
-public class frmHistorial extends javax.swing.JFrame {
+public class frmHistorial extends javax.swing.JInternalFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmHistorial.class.getName());
     private final HistorialGeneralController controlador;
@@ -20,11 +20,12 @@ public class frmHistorial extends javax.swing.JFrame {
      * Creates new form frmHistorial
      */
     public frmHistorial() {
+        super("Historial General", true, true, true, true);
         initComponents();
         controlador = new HistorialGeneralController(this);
         controlador.cargarHistorialCompleto();
         ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logoGris.png"));
-        Image imagenEscalada = logo.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
+        Image imagenEscalada = logo.getImage().getScaledInstance(76,63,Image.SCALE_SMOOTH);
         lblLogo.setIcon(new ImageIcon(imagenEscalada));
     }
     
@@ -67,7 +68,7 @@ public class frmHistorial extends javax.swing.JFrame {
         LogOut.addActionListener(this::LogOutActionPerformed);
         jPopupMenu1.add(LogOut);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(241, 236, 224));
 
         TablaProductos.setBackground(new java.awt.Color(241, 236, 224));

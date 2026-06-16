@@ -17,6 +17,7 @@ public class Datos {
     public static Compra[] compras = new Compra[100];
     
     public static Cliente clienteActual;
+    public static Administrador adminActual;
     
     static {
         admins[0] = new Administrador(1, "Admin", "admin@gmail.com", "1234", 15000, "Matutino");

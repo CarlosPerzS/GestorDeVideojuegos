@@ -127,6 +127,14 @@ public class frmRegistroAdministrador extends javax.swing.JFrame {
             }
         });
         jtfNombre.addActionListener(this::jtfNombreActionPerformed);
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyTyped(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -144,6 +152,11 @@ public class frmRegistroAdministrador extends javax.swing.JFrame {
             }
         });
         jtfContraseña.addActionListener(this::jtfContraseñaActionPerformed);
+        jtfContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfContraseñaKeyPressed(evt);
+            }
+        });
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -163,6 +176,11 @@ public class frmRegistroAdministrador extends javax.swing.JFrame {
             }
         });
         jtfCorreo.addActionListener(this::jtfCorreoActionPerformed);
+        jtfCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfCorreoKeyPressed(evt);
+            }
+        });
 
         jcbTurno.setBackground(new java.awt.Color(183, 182, 181));
         jcbTurno.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -191,6 +209,14 @@ public class frmRegistroAdministrador extends javax.swing.JFrame {
             }
         });
         jtfSalario.addActionListener(this::jtfSalarioActionPerformed);
+        jtfSalario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfSalarioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfSalarioKeyTyped(evt);
+            }
+        });
 
         Regresar.setBackground(new java.awt.Color(177, 184, 196));
         Regresar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -350,6 +376,61 @@ public class frmRegistroAdministrador extends javax.swing.JFrame {
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
         controlador.registrar();
     }//GEN-LAST:event_btnRegistrarseActionPerformed
+
+    private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && c != ' '
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfContraseña.requestFocus();
+        }
+    }//GEN-LAST:event_jtfNombreKeyPressed
+
+    private void jtfContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContraseñaKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfCorreo.requestFocus();
+        }
+    }//GEN-LAST:event_jtfContraseñaKeyPressed
+
+    private void jtfCorreoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCorreoKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfSalario.requestFocus();
+        }
+    }//GEN-LAST:event_jtfCorreoKeyPressed
+
+    private void jtfSalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSalarioKeyTyped
+        char c = evt.getKeyChar();
+        String textoActual = jtfSalario.getText();
+
+        if (!Character.isDigit(c) && c != '.' && c != ','
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+            return;
+        }
+
+        if (c == '.' && textoActual.contains(".")) {
+            evt.consume();
+            return;
+        }
+
+        if (c == ',') {
+            if (textoActual.endsWith(",") || textoActual.endsWith(".")) {
+                evt.consume();
+                return;
+            }
+        }
+    }//GEN-LAST:event_jtfSalarioKeyTyped
+
+    private void jtfSalarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSalarioKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jcbTurno.requestFocus();
+        }
+    }//GEN-LAST:event_jtfSalarioKeyPressed
 
     public javax.swing.JTextField getJtfNombre() {
         return jtfNombre;

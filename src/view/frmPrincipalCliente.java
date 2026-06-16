@@ -26,6 +26,9 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
      */
     public frmPrincipalCliente() {
         initComponents();
+        if (model.Datos.clienteActual != null) {
+            nombre.setText(model.Datos.clienteActual.getNombre());
+        }
         
         ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logoGris.png"));
         Image imagenEscalada = logo.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
@@ -73,7 +76,7 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnConsolas = new javax.swing.JButton();
         Toolbar = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         btnUsuario = new javax.swing.JButton();
         btnVideojuegos = new javax.swing.JButton();
@@ -131,11 +134,11 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
 
         Toolbar.setBackground(new java.awt.Color(35, 57, 91));
 
-        jLabel9.setBackground(new java.awt.Color(35, 57, 91));
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 20)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(94, 117, 158));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("~USUARIO~");
+        nombre.setBackground(new java.awt.Color(35, 57, 91));
+        nombre.setFont(new java.awt.Font("Times New Roman", 2, 20)); // NOI18N
+        nombre.setForeground(new java.awt.Color(94, 117, 158));
+        nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombre.setText("~USUARIO~");
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoGris.png"))); // NOI18N
 
@@ -156,7 +159,7 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
+                .addComponent(nombre)
                 .addGap(18, 18, 18)
                 .addComponent(btnUsuario)
                 .addGap(48, 48, 48))
@@ -169,7 +172,7 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
                     .addComponent(btnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                     .addGroup(ToolbarLayout.createSequentialGroup()
                         .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9)
+                            .addComponent(nombre)
                             .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 15, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -327,11 +330,11 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnVideojuegos;
     public javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jtfBuscar;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel nombre;
     // End of variables declaration//GEN-END:variables
 }

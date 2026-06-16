@@ -155,6 +155,11 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         jtfCorreo.addActionListener(this::jtfCorreoActionPerformed);
+        jtfCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfCorreoKeyPressed(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -292,6 +297,12 @@ public class frmLogin extends javax.swing.JFrame {
             jtfContraseña.setForeground(new Color(98, 123, 168));
         }
     }//GEN-LAST:event_jtfContraseñaFocusLost
+
+    private void jtfCorreoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCorreoKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfContraseña.requestFocus();
+        }
+    }//GEN-LAST:event_jtfCorreoKeyPressed
 
     public JTextField getJtfCorreo() {
         return jtfCorreo;
