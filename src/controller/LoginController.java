@@ -43,7 +43,7 @@ public class LoginController {
 
         ClienteDAO clienteDAO = new ClienteDAO();
         Cliente cliente = clienteDAO.login(correo, contraseña);
-
+        model.Datos.clienteActual = cliente;
         if (cliente != null) {
             new frmPrincipalCliente().setVisible(true);
             vista.dispose();

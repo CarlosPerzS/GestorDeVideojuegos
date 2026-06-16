@@ -4,8 +4,13 @@
  */
 package view;
 
+import controller.PrincipalClienteController;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -14,7 +19,8 @@ import javax.swing.ImageIcon;
 public class frmPrincipalCliente extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmPrincipalCliente.class.getName());
-
+    private PrincipalClienteController controlador = new PrincipalClienteController(this);
+    
     /**
      * Creates new form frmPrincipalCliente
      */
@@ -24,8 +30,30 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
         ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logoGris.png"));
         Image imagenEscalada = logo.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
         lblLogo.setIcon(new ImageIcon(imagenEscalada));
-    }
+        
+        TablaProductos.setGridColor(new Color(174, 172, 160));
+        TablaProductos.setRowHeight(40);
+        TablaProductos.setShowGrid(true);
+        
+        JTableHeader header = TablaProductos.getTableHeader();
 
+        header.setBackground(new Color(174, 172, 160));
+        header.setForeground(Color.BLACK);
+        header.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        header.setPreferredSize(new Dimension(header.getWidth(), 35));
+        
+
+        TablaProductos.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+        TablaProductos.setBackground(new Color(241, 236, 224));
+        TablaProductos.setSelectionBackground(new Color(77, 100, 141));
+        TablaProductos.setSelectionForeground(Color.WHITE);
+        
+        TablaProductos.getTableHeader().setReorderingAllowed(false);
+        
+        controlador.cargarTabla();
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,6 +127,7 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
         btnConsolas.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnConsolas.setForeground(new java.awt.Color(241, 236, 224));
         btnConsolas.setText("CONSOLAS");
+        btnConsolas.addActionListener(this::btnConsolasActionPerformed);
 
         Toolbar.setBackground(new java.awt.Color(35, 57, 91));
 
@@ -150,6 +179,7 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
         btnVideojuegos.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnVideojuegos.setForeground(new java.awt.Color(241, 236, 224));
         btnVideojuegos.setText("VIDEOJUEGOS");
+        btnVideojuegos.addActionListener(this::btnVideojuegosActionPerformed);
 
         jtfBuscar.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jtfBuscar.setForeground(new java.awt.Color(35, 57, 91));
@@ -200,7 +230,7 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
                 .addComponent(Toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addComponent(jLabel8)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
@@ -231,6 +261,8 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        String busqueda = jtfBuscar.getText();
+        controlador.buscarProducto(busqueda);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
@@ -248,6 +280,16 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_LogOutActionPerformed
+
+    private void btnVideojuegosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVideojuegosActionPerformed
+        // TODO add your handling code here:
+        controlador.filtrarVideojuegos();
+    }//GEN-LAST:event_btnVideojuegosActionPerformed
+
+    private void btnConsolasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsolasActionPerformed
+        // TODO add your handling code here:
+        controlador.filtrarConsolas();
+    }//GEN-LAST:event_btnConsolasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,14 +318,14 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem LogOut;
-    private javax.swing.JTable TablaProductos;
+    public javax.swing.JTable TablaProductos;
     private javax.swing.JPanel Toolbar;
     private javax.swing.JMenuItem VerCompras;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnConsolas;
     private javax.swing.JButton btnUsuario;
     private javax.swing.JButton btnVideojuegos;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPopupMenu jPopupMenu1;

@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ComprasController;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -18,12 +19,17 @@ public class frmCompras extends javax.swing.JFrame {
     /**
      * Creates new form frmHistorial
      */
+    private ComprasController controlador = new ComprasController(this);
     public frmCompras() {
         initComponents();
-        
+        controlador.cargarHistorialCompleto();
         ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logoGris.png"));
         Image imagenEscalada = logo.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
         lblLogo.setIcon(new ImageIcon(imagenEscalada));
+    }
+    
+    public javax.swing.JTable getTablaProductos() {
+        return TablaProductos;
     }
 
     /**
@@ -36,8 +42,6 @@ public class frmCompras extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        RegistrarAdmin = new javax.swing.JMenuItem();
-        VerHistorial = new javax.swing.JMenuItem();
         LogOut = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaProductos = new javax.swing.JTable();
@@ -47,16 +51,9 @@ public class frmCompras extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         btnUsuario = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
 
         jPopupMenu1.setToolTipText("");
-
-        RegistrarAdmin.setText("REGISTRAR ADMIN");
-        RegistrarAdmin.addActionListener(this::RegistrarAdminActionPerformed);
-        jPopupMenu1.add(RegistrarAdmin);
-
-        VerHistorial.setText("HISTORIAL");
-        VerHistorial.addActionListener(this::VerHistorialActionPerformed);
-        jPopupMenu1.add(VerHistorial);
 
         LogOut.setText("LOG OUT");
         LogOut.addActionListener(this::LogOutActionPerformed);
@@ -131,7 +128,7 @@ public class frmCompras extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToolbarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1061, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(btnUsuario)
@@ -153,6 +150,12 @@ public class frmCompras extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnRegresar.setBackground(new java.awt.Color(200, 157, 60));
+        btnRegresar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(241, 236, 224));
+        btnRegresar.setText("REGRESAR");
+        btnRegresar.addActionListener(this::btnRegresarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,8 +169,13 @@ public class frmCompras extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(575, 575, 575))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(575, 575, 575))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(121, 121, 121))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +190,9 @@ public class frmCompras extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addGap(49, 49, 49)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -191,18 +201,6 @@ public class frmCompras extends javax.swing.JFrame {
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         jPopupMenu1.show(btnUsuario, 0, btnUsuario.getHeight());
     }//GEN-LAST:event_btnUsuarioActionPerformed
-
-    private void RegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarAdminActionPerformed
-        frmRegistroAdministrador ventana = new frmRegistroAdministrador();
-        ventana.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_RegistrarAdminActionPerformed
-
-    private void VerHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerHistorialActionPerformed
-        frmCompras ventana = new frmCompras();
-        ventana.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_VerHistorialActionPerformed
 
     private void LogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutActionPerformed
         frmLogin ventana = new frmLogin();
@@ -216,6 +214,13 @@ public class frmCompras extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblLogoMouseClicked
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        frmPrincipalCliente ventana = new frmPrincipalCliente();
+        ventana.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,10 +249,9 @@ public class frmCompras extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem LogOut;
-    private javax.swing.JMenuItem RegistrarAdmin;
     private javax.swing.JTable TablaProductos;
     private javax.swing.JPanel Toolbar;
-    private javax.swing.JMenuItem VerHistorial;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnUsuario;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

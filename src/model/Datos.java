@@ -13,12 +13,17 @@ public class Datos {
     public static Cliente[] clientes = new Cliente[100];
 
     public static Administrador[] admins = new Administrador[20];
-
+    
+    public static Compra[] compras = new Compra[100];
+    
+    public static Cliente clienteActual;
+    
     static {
         admins[0] = new Administrador(1, "Admin", "admin@gmail.com", "1234", 15000, "Matutino");
         
         
         clientes[0] = new Cliente(1, "Shari Palma", "shari@gmail.com", "1234", "Efectivo", 0);
+        
         
     }
 }

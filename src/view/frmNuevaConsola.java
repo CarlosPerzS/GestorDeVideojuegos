@@ -335,7 +335,7 @@ public class frmNuevaConsola extends javax.swing.JFrame {
                     .addGroup(Panel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel16)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -344,20 +344,20 @@ public class frmNuevaConsola extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(131, 131, 131)
-                            .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(595, 595, 595)
-                            .addComponent(jLabel8))))
+                        .addGap(131, 131, 131)
+                        .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(595, 595, 595)
+                        .addComponent(jLabel8)))
                 .addContainerGap(89, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(153, 153, 153))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,11 +367,11 @@ public class frmNuevaConsola extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -385,9 +385,9 @@ public class frmNuevaConsola extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -424,19 +424,31 @@ public class frmNuevaConsola extends javax.swing.JFrame {
                 || jtfStock.getText().trim().isEmpty()) {
 
             javax.swing.JOptionPane.showMessageDialog(this,
-                    "Debes llenar todos los campos",
-                    "Campos vacios",
+                    "Debes llenar todos los campos antes de añadir la consola.",
+                    "Campos vacíos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (!jRadioButton1.isSelected() && !jRadioButton2.isSelected()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Por favor, seleccione si la consola incluye juego o no.",
+                    "Selección faltante",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         try {
             String nombre = jtfNombre.getText().trim();
-            double precio = Double.parseDouble(jtfPrecio.getText().trim().replace(",", "."));
+            double precio = Double.parseDouble(jtfPrecio.getText().trim().replace(",", ""));
             String marca = jtfMarca.getText().trim();
             int almacenamiento = Integer.parseInt(jtfAlmacenamiento.getText().trim());
             String color = jtfColor.getText().trim();
-            int stock = Integer.parseInt(jtfStock.getText().trim());
+            String stockTexto = jtfStock.getText().trim().replaceAll("[^0-9]", "");
+            if (stockTexto.isEmpty()) {
+                throw new NumberFormatException("Stock vacío o sin números");
+            }
+            int stock = Integer.parseInt(stockTexto);
             boolean incluyeJuego = jRadioButton1.isSelected();
 
             Consola c = new Consola(model.catalogo.contadorId,marca,almacenamiento,incluyeJuego,color,model.catalogo.contadorId,nombre,precio,stock,"Consola");

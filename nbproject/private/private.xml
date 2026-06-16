@@ -3,24 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Datos.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmHistorial.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmLogin.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmNuevaConsola.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmNuevoVideojuego.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmPrincipalAdmin.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Videojuego.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/EstructurasDeDatos/ListaVideojuegos.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Administrador.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/EstructurasDeDatos/ListaConsolas.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/AdministradorDAO.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Cliente.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/ClienteDAO.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Compra.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Consola.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/MetodoPago.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/model/Producto.java</file>
-            <file>file:/C:/Users/MaPre/Documents/ceti/POE/GestorDeVideojuegos/src/view/frmPrincipalCliente.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/controller/PrincipalClienteController.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/view/frmInformacionConsola.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/controller/InformacionConsolaController.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/controller/InformacionVideojuegoController.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/model/Datos.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/model/Compra.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/view/frmMetodoDePago.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/controller/MetodoPagoController.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/model/MetodoPago.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/model/Cliente.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/view/frmHistorial.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/controller/HistorialGeneralController.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/view/frmCompras.java</file>
+            <file>file:/C:/Users/CARLO/OneDrive/Documentos/NetBeansProjects/Gestor%20de%20Videojuegos/src/controller/ComprasController.java</file>
         </group>
     </open-files>
 </project-private>

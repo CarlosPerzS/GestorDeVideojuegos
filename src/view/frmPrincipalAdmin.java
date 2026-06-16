@@ -22,7 +22,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
     private java.util.List<Integer> idsEnTabla = new java.util.ArrayList<>();
     private java.util.List<String> tiposEnTabla = new java.util.ArrayList<>();
     /**
-     * Creates new form frmPrincipalAdmin
+     * 
      */
     public frmPrincipalAdmin() {
         initComponents();

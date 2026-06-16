@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.HistorialGeneralController;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -14,18 +15,22 @@ import javax.swing.ImageIcon;
 public class frmHistorial extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmHistorial.class.getName());
-
+    private final HistorialGeneralController controlador;
     /**
      * Creates new form frmHistorial
      */
     public frmHistorial() {
         initComponents();
-        
+        controlador = new HistorialGeneralController(this);
+        controlador.cargarHistorialCompleto();
         ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logoGris.png"));
         Image imagenEscalada = logo.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
         lblLogo.setIcon(new ImageIcon(imagenEscalada));
     }
-
+    
+    public javax.swing.JTable getTablaProductos() {
+        return TablaProductos;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

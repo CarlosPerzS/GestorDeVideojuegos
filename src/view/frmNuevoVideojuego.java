@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -19,6 +19,7 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
     /**
      * Creates new form frmNuevaConsola
      */
+    
     public frmNuevoVideojuego() {
         initComponents();
         this.setExtendedState(frmPrincipalAdmin.MAXIMIZED_BOTH);
@@ -232,6 +233,7 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
 
         jtfPrecio.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfPrecio.setForeground(new java.awt.Color(35, 57, 91));
+        jtfPrecio.addActionListener(this::jtfPrecioActionPerformed);
         jtfPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtfPrecioKeyPressed(evt);
@@ -375,8 +377,9 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(119, 119, 119)
@@ -392,17 +395,13 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
                 .addComponent(Toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(157, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(70, 70, 70))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -463,7 +462,7 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
 
         try {
             String nombre = jtfNombre.getText().trim();
-            double precio = Double.parseDouble(jtfPrecio.getText().trim().replace(",", "."));
+            double precio = Double.parseDouble(jtfPrecio.getText().trim().replace(",", ""));
             String genero = jtfGenero.getText().trim();
             String fechaLanzamiento = jtfFechaLanzamiento.getText().trim();
             String plataforma = jtfPlataforma.getText().trim();
@@ -533,12 +532,24 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
 
     private void jtfPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPrecioKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c) && c != '.'
+        String textoActual = jtfPrecio.getText();
+
+        if (!Character.isDigit(c) && c != '.' && c != ',' 
                 && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
             evt.consume();
+            return;
         }
-        if (c == '.' && jtfPrecio.getText().contains(".")) {
+
+        if (c == '.' && textoActual.contains(".")) {
             evt.consume();
+            return;
+        }
+
+        if (c == ',') {
+            if (textoActual.endsWith(",") || textoActual.endsWith(".")) {
+                evt.consume();
+                return;
+            }
         }
     }//GEN-LAST:event_jtfPrecioKeyTyped
 
@@ -601,6 +612,10 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
     private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreActionPerformed
+
+    private void jtfPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfPrecioActionPerformed
 
     /**
      * @param args the command line arguments
