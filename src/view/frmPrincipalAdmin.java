@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.JTableHeader;
 
@@ -26,6 +27,10 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
      */
     public frmPrincipalAdmin() {
         initComponents();
+        desktop.setOpaque(false);
+        desktop.setBounds(0, 0, getWidth(), getHeight());
+
+        getLayeredPane().add(desktop, javax.swing.JLayeredPane.PALETTE_LAYER);
         this.setExtendedState(frmPrincipalAdmin.MAXIMIZED_BOTH);
 
         ImageIcon icono = new ImageIcon(
@@ -72,8 +77,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         tiposEnTabla.clear();
 
         javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(
-                new String[]{"PRODUCTO", "TIPO", "PRECIO", "STOCK"}, 0) {
-            @Override
+                new String[]{"NOMBRE", "TIPO", "PRECIO", "STOCK", "DETALLE"}, 0) {
             public boolean isCellEditable(int r, int c) {
                 return false;
             }
@@ -81,32 +85,48 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
 
         EstructurasDeDatos.ListaConsolas.Nodo auxC = model.catalogo.consolas.origen;
         while (auxC != null) {
+            model.Consola c = auxC.dato;
             modelo.addRow(new Object[]{
-                auxC.dato.getNombre(),
+                c.getNombre(),
                 "Consola",
-                "$" + auxC.dato.getPrecio(),
-                auxC.dato.getStockDisponible()
+                "$" + c.getPrecio(),
+                c.getStockDisponible(),
+                "Marca: " + c.getMarca() + " | "
+                + c.getAlmacenamiento() + "GB | "
+                + "Color: " + c.getColor() + " | "
+                + "juego incluido: " + (c.isIncluyeJuego() ? "Sí" : "No")
             });
-            idsEnTabla.add(auxC.dato.getId_Consola());
+            idsEnTabla.add(c.getId_Consola());
             tiposEnTabla.add("Consola");
             auxC = auxC.siguiente;
         }
 
         EstructurasDeDatos.ListaVideojuegos.Nodo auxV = model.catalogo.videojuegos.cola;
         while (auxV != null) {
+            model.Videojuego v = auxV.getValor();
             modelo.addRow(new Object[]{
-                auxV.getValor().getNombre(),
+                v.getNombre(),
                 "Videojuego",
-                "$" + auxV.getValor().getPrecio(),
-                auxV.getValor().getStockDisponible()
+                "$" + v.getPrecio(),
+                v.getStockDisponible(),
+                "Genero: " + v.getGenero() + " | "
+                + "Clasificacion: " + v.getClasificacionEdad() + " | "
+                + "Plataforma: " + v.getPlataforma() + " | "
+                + "Lanzamiento: " + v.getFechaLanzamiento()
             });
-            idsEnTabla.add(auxV.getValor().getId_Videojuego());
+            idsEnTabla.add(v.getId_Videojuego());
             tiposEnTabla.add("Videojuego");
             auxV = auxV.getAptSiguiente();
         }
 
         TablaProductos.setModel(modelo);
-
+        TablaProductos.setGridColor(new Color(174, 172, 160));
+        TablaProductos.setRowHeight(40);
+        TablaProductos.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+        TablaProductos.setBackground(new Color(241, 236, 224));
+        TablaProductos.setSelectionBackground(new Color(77, 100, 141));
+        TablaProductos.setSelectionForeground(Color.WHITE);
+        TablaProductos.getColumnModel().getColumn(4).setPreferredWidth(400);
     }
 
     /**
@@ -135,6 +155,8 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
+        desktop = new javax.swing.JDesktopPane();
+        btnModificar1 = new javax.swing.JButton();
 
         jPopupMenu1.setToolTipText("");
 
@@ -262,6 +284,23 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         btnModificar.setText("MODIFICAR");
         btnModificar.addActionListener(this::btnModificarActionPerformed);
 
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        btnModificar1.setBackground(new java.awt.Color(200, 157, 60));
+        btnModificar1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnModificar1.setForeground(new java.awt.Color(241, 236, 224));
+        btnModificar1.setText("ACTUALIZAR");
+        btnModificar1.addActionListener(this::btnModificar1ActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -275,7 +314,9 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(454, 454, 454)
+                                .addGap(171, 171, 171)
+                                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(183, 183, 183)
                                 .addComponent(btnAgregarConsola, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(77, 77, 77)
                                 .addComponent(btnAgregarVideojuego, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -285,12 +326,14 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(164, 164, 164)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1214, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 173, Short.MAX_VALUE)))
+                        .addGap(0, 185, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(192, 192, 192)
+                .addGap(5, 5, 5)
+                .addComponent(btnModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(494, 494, 494))
         );
@@ -301,7 +344,8 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAgregarConsola, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                    .addComponent(btnAgregarVideojuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAgregarVideojuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(desktop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -311,7 +355,8 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
@@ -319,16 +364,14 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -340,14 +383,17 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
 
     private void btnAgregarConsolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarConsolaActionPerformed
         frmNuevaConsola ventana = new frmNuevaConsola();
+        desktop.add(ventana);
+        ventana.setSize(900, 600);
+        ventana.setLocation((desktop.getWidth() - ventana.getWidth()) / 2,(desktop.getHeight() - ventana.getHeight()) / 2);
         ventana.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_btnAgregarConsolaActionPerformed
 
     private void btnAgregarVideojuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVideojuegoActionPerformed
         frmNuevoVideojuego ventana = new frmNuevoVideojuego();
+        desktop.add(ventana);
+        ventana.setLocation((desktop.getWidth() - ventana.getWidth()) / 2,(desktop.getHeight() - ventana.getHeight()) / 2);
         ventana.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_btnAgregarVideojuegoActionPerformed
 
     private void RegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarAdminActionPerformed
@@ -406,7 +452,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         int fila = TablaProductos.getSelectedRow();
         if (fila == -1) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                    "Debes escoger un producto antes",
+                    "Debes seleccionar antes una fila",
                     "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
@@ -414,58 +460,52 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
 
         String tipo = tiposEnTabla.get(fila);
         int id = idsEnTabla.get(fila);
+        String nombre = TablaProductos.getValueAt(fila, 0).toString();
 
-        if (tipo.equals("Consola")) {
-            String nuevoStockStr = javax.swing.JOptionPane.showInputDialog(this,
-                    "Nuevo stock disponible:",
-                    "Modificar Consola",
-                    javax.swing.JOptionPane.QUESTION_MESSAGE);
+        javax.swing.JTextField txtPrecio = new javax.swing.JTextField(10);
+        javax.swing.JTextField txtStock = new javax.swing.JTextField(10);
+        javax.swing.JPanel panel = new javax.swing.JPanel(new java.awt.GridLayout(4, 1, 5, 5));
+        panel.add(new javax.swing.JLabel("Nuevo precio:"));
+        panel.add(txtPrecio);
+        panel.add(new javax.swing.JLabel("Nuevo stock:"));
+        panel.add(txtStock);
 
-            if (nuevoStockStr != null && !nuevoStockStr.trim().isEmpty()) {
-                try {
-                    int nuevoStock = Integer.parseInt(nuevoStockStr.trim());
+        int resultado = javax.swing.JOptionPane.showConfirmDialog(this,
+                panel, "Modificar " + tipo,
+                javax.swing.JOptionPane.OK_CANCEL_OPTION,
+                javax.swing.JOptionPane.PLAIN_MESSAGE);
+
+        if (resultado == javax.swing.JOptionPane.OK_OPTION) {
+            try {
+                double nuevoPrecio = Double.parseDouble(txtPrecio.getText().trim().replace(",", "."));
+                int nuevoStock = Integer.parseInt(txtStock.getText().trim());
+
+                if (tipo.equals("Consola")) {
                     model.Consola c = model.catalogo.consolas.obtener(id);
+                    c.setPrecio(nuevoPrecio);
                     c.setStockDisponible(nuevoStock);
-                    cargarTabla();
-                    javax.swing.JOptionPane.showMessageDialog(this,
-                            "Stock actualizado correctamente",
-                            "Modificacion",
-                            javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                } catch (NumberFormatException e) {
-                    javax.swing.JOptionPane.showMessageDialog(this,
-                            "El stock debe ser un numero entero",
-                            "Error",
-                            javax.swing.JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        } else {
-            String nuevoStockStr = javax.swing.JOptionPane.showInputDialog(this,
-                    "Nuevo stock disponible:",
-                    "Modificar Videojuego",
-                    javax.swing.JOptionPane.QUESTION_MESSAGE);
-
-            if (nuevoStockStr != null && !nuevoStockStr.trim().isEmpty()) {
-                try {
-                    int nuevoStock = Integer.parseInt(nuevoStockStr.trim());
+                } else {
                     EstructurasDeDatos.ListaVideojuegos.Nodo aux = model.catalogo.videojuegos.cola;
                     while (aux != null) {
                         if (aux.getValor().getId_Videojuego() == id) {
+                            aux.getValor().setPrecio(nuevoPrecio);
                             aux.getValor().setStockDisponible(nuevoStock);
                             break;
                         }
                         aux = aux.getAptSiguiente();
                     }
-                    cargarTabla();
-                    javax.swing.JOptionPane.showMessageDialog(this,
-                            "Stock actualizado correctamente",
-                            "Modificacion",
-                            javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                } catch (NumberFormatException e) {
-                    javax.swing.JOptionPane.showMessageDialog(this,
-                            "El stock debe ser un número entero",
-                            "Error",
-                            javax.swing.JOptionPane.ERROR_MESSAGE);
                 }
+                cargarTabla();
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Proceso terminado correctamente",
+                        "Exito",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (NumberFormatException e) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Erros en el formato de precio y stock ",
+                        "Error de formato",
+                        javax.swing.JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -476,6 +516,10 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblLogoMouseClicked
+
+    private void btnModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar1ActionPerformed
+        cargarTabla();
+    }//GEN-LAST:event_btnModificar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -512,7 +556,9 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarVideojuego;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnModificar1;
     private javax.swing.JButton btnUsuario;
+    private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

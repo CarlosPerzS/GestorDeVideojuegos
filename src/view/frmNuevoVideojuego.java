@@ -13,7 +13,7 @@ import model.Videojuego;
  *
  * @author shari
  */
-public class frmNuevoVideojuego extends javax.swing.JFrame {
+public class frmNuevoVideojuego extends javax.swing.JInternalFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmNuevoVideojuego.class.getName());
     /**
@@ -21,40 +21,34 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
      */
     
     public frmNuevoVideojuego() {
+        super("Nuevo videojuego", true, true, true, true);
         initComponents();
-        this.setExtendedState(frmPrincipalAdmin.MAXIMIZED_BOTH);
-        
-        
-        ImageIcon icono = new ImageIcon(
-                getClass().getResource("/imagenes/usuario.png")
-        );
 
+        ImageIcon icono = new ImageIcon(getClass().getResource("/imagenes/usuario.png"));
         Image img = icono.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         btnUsuario.setIcon(new ImageIcon(img));
 
         ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logoGris.png"));
-        Image imagenEscalada = logo.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
+        Image imagenEscalada = logo.getImage().getScaledInstance(76, 63, Image.SCALE_SMOOTH);
         lblLogo.setIcon(new ImageIcon(imagenEscalada));
-        
-        
+
         jtfPrecio.setOpaque(true);
         jtfPrecio.setBackground(Color.WHITE);
-        
-         jtfPrecio.setOpaque(true);
-        jtfPrecio.setBackground(Color.WHITE);
-        
-         jtfFechaLanzamiento.setOpaque(true);
+
+        jtfFechaLanzamiento.setOpaque(true);
         jtfFechaLanzamiento.setBackground(Color.WHITE);
-        
-         jtfFechaLanzamiento.setOpaque(true);
-        jtfFechaLanzamiento.setBackground(Color.WHITE);
-        
-         jtfPlataforma.setOpaque(true);
+
+        jtfPlataforma.setOpaque(true);
         jtfPlataforma.setBackground(Color.WHITE);
-        
-         jtfStock.setOpaque(true);
+
+        jtfStock.setOpaque(true);
         jtfStock.setBackground(Color.WHITE);
 
+        jtfNombre.setOpaque(true);
+        jtfNombre.setBackground(Color.WHITE);
+
+        jtfGenero.setOpaque(true);
+        jtfGenero.setBackground(Color.WHITE);
     }
 
     /**
@@ -76,7 +70,6 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         Panel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -107,8 +100,6 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
         LogOut.setText("LOG OUT");
         LogOut.addActionListener(this::LogOutActionPerformed);
         jPopupMenu1.add(LogOut);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(241, 236, 224));
 
@@ -165,12 +156,6 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(35, 57, 91));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("NUEVO VIDEOJUEGO");
-
-        btnEliminar.setBackground(new java.awt.Color(200, 157, 60));
-        btnEliminar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(241, 236, 224));
-        btnEliminar.setText("REGRESAR");
-        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         btnModificar.setBackground(new java.awt.Color(35, 57, 91));
         btnModificar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -373,13 +358,8 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(119, 119, 119)
@@ -398,9 +378,7 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(106, Short.MAX_VALUE))
         );
 
@@ -473,7 +451,9 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
 
             model.catalogo.videojuegos.encolar(v);
             model.catalogo.contadorId++;
-
+            System.out.println(
+                    model.catalogo.videojuegos.recorrerCola()
+            );
             javax.swing.JOptionPane.showMessageDialog(this,
                     "se agrego correctamente\n",
                     "Agregar",
@@ -494,12 +474,6 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
                     javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        frmPrincipalAdmin ventana = new frmPrincipalAdmin();
-        ventana.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void jcbClasifiacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClasifiacionActionPerformed
         // TODO add your handling code here:
@@ -572,7 +546,9 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfFechaLanzamientoKeyPressed
 
     private void jtfStockKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfStockKeyPressed
-        
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfPlataforma.requestFocus();
+        }
     }//GEN-LAST:event_jtfStockKeyPressed
 
     private void jtfFechaLanzamientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFechaLanzamientoKeyTyped
@@ -648,7 +624,6 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
     private javax.swing.JMenuItem RegistrarAdmin;
     private javax.swing.JPanel Toolbar;
     private javax.swing.JMenuItem VerHistorial;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnUsuario;
     private javax.swing.JLabel jLabel10;

@@ -13,7 +13,7 @@ import model.Consola;
  *
  * @author shari
  */
-public class frmNuevaConsola extends javax.swing.JFrame {
+public class frmNuevaConsola extends javax.swing.JInternalFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmNuevaConsola.class.getName());
 
@@ -21,9 +21,8 @@ public class frmNuevaConsola extends javax.swing.JFrame {
      * Creates new form frmNuevaConsola
      */
     public frmNuevaConsola() {
+        super("Nueva Consola", true, true, true, true);
         initComponents();
-        this.setExtendedState(frmPrincipalAdmin.MAXIMIZED_BOTH);
-        
         
         ImageIcon icono = new ImageIcon(
                 getClass().getResource("/imagenes/usuario.png")
@@ -33,7 +32,7 @@ public class frmNuevaConsola extends javax.swing.JFrame {
         btnUsuario.setIcon(new ImageIcon(img));
 
         ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logoGris.png"));
-        Image imagenEscalada = logo.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
+        Image imagenEscalada = logo.getImage().getScaledInstance(76,63,Image.SCALE_SMOOTH);
         lblLogo.setIcon(new ImageIcon(imagenEscalada));
         
         
@@ -77,7 +76,6 @@ public class frmNuevaConsola extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         Panel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -109,8 +107,6 @@ public class frmNuevaConsola extends javax.swing.JFrame {
         LogOut.setText("LOG OUT");
         LogOut.addActionListener(this::LogOutActionPerformed);
         jPopupMenu1.add(LogOut);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(241, 236, 224));
 
@@ -168,12 +164,6 @@ public class frmNuevaConsola extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("NUEVA CONSOLA");
 
-        btnEliminar.setBackground(new java.awt.Color(200, 157, 60));
-        btnEliminar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(241, 236, 224));
-        btnEliminar.setText("REGRESAR");
-        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
-
         btnModificar.setBackground(new java.awt.Color(35, 57, 91));
         btnModificar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(241, 236, 224));
@@ -228,29 +218,87 @@ public class frmNuevaConsola extends javax.swing.JFrame {
         jRadioButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(35, 57, 91));
         jRadioButton1.setText("SI");
+        jRadioButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jRadioButton1KeyPressed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jRadioButton2.setForeground(new java.awt.Color(35, 57, 91));
         jRadioButton2.setText("NO");
+        jRadioButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jRadioButton2KeyPressed(evt);
+            }
+        });
 
         jtfPrecio.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfPrecio.setForeground(new java.awt.Color(35, 57, 91));
+        jtfPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfPrecioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPrecioKeyTyped(evt);
+            }
+        });
 
         jtfNombre.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfNombre.setForeground(new java.awt.Color(35, 57, 91));
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyTyped(evt);
+            }
+        });
 
         jtfMarca.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfMarca.setForeground(new java.awt.Color(35, 57, 91));
+        jtfMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfMarcaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfMarcaKeyTyped(evt);
+            }
+        });
 
         jtfAlmacenamiento.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfAlmacenamiento.setForeground(new java.awt.Color(35, 57, 91));
+        jtfAlmacenamiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfAlmacenamientoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfAlmacenamientoKeyTyped(evt);
+            }
+        });
 
         jtfColor.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfColor.setForeground(new java.awt.Color(35, 57, 91));
+        jtfColor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfColorKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfColorKeyTyped(evt);
+            }
+        });
 
         jtfStock.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jtfStock.setForeground(new java.awt.Color(35, 57, 91));
+        jtfStock.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfStockKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfStockKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel2Layout = new javax.swing.GroupLayout(Panel2);
         Panel2.setLayout(Panel2Layout);
@@ -344,20 +392,16 @@ public class frmNuevaConsola extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(595, 595, 595)
-                        .addComponent(jLabel8)))
-                .addContainerGap(89, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(153, 153, 153))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(131, 131, 131)
+                            .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(595, 595, 595)
+                            .addComponent(jLabel8))))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,9 +412,7 @@ public class frmNuevaConsola extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(99, Short.MAX_VALUE))
         );
 
@@ -381,7 +423,7 @@ public class frmNuevaConsola extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,11 +519,112 @@ public class frmNuevaConsola extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        frmPrincipalAdmin ventana = new frmPrincipalAdmin();
-        ventana.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfPrecio.requestFocus();
+        }
+    }//GEN-LAST:event_jtfNombreKeyPressed
+
+    private void jtfPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPrecioKeyTyped
+        char c = evt.getKeyChar();
+        String textoActual = jtfPrecio.getText();
+
+        if (!Character.isDigit(c) && c != '.' && c != ','
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+            return;
+        }
+
+        if (c == '.' && textoActual.contains(".")) {
+            evt.consume();
+            return;
+        }
+
+        if (c == ',') {
+            if (textoActual.endsWith(",") || textoActual.endsWith(".")) {
+                evt.consume();
+                return;
+            }
+        }
+    }//GEN-LAST:event_jtfPrecioKeyTyped
+
+    private void jtfPrecioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPrecioKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfMarca.requestFocus();
+        }
+    }//GEN-LAST:event_jtfPrecioKeyPressed
+
+    private void jtfMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfMarcaKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && c != ' '
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfMarcaKeyTyped
+
+    private void jtfMarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfMarcaKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfAlmacenamiento.requestFocus();
+        }
+    }//GEN-LAST:event_jtfMarcaKeyPressed
+
+    private void jtfAlmacenamientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfAlmacenamientoKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfAlmacenamientoKeyTyped
+
+    private void jtfAlmacenamientoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfAlmacenamientoKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jRadioButton2.requestFocus();
+        } 
+    }//GEN-LAST:event_jtfAlmacenamientoKeyPressed
+
+    private void jRadioButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jRadioButton2KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfColor.requestFocus();
+        }
+    }//GEN-LAST:event_jRadioButton2KeyPressed
+
+    private void jRadioButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jRadioButton1KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfColor.requestFocus();
+        }
+    }//GEN-LAST:event_jRadioButton1KeyPressed
+
+    private void jtfColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfColorKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && c != ' '
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfColorKeyTyped
+
+    private void jtfColorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfColorKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            jtfStock.requestFocus();
+        }
+    }//GEN-LAST:event_jtfColorKeyPressed
+
+    private void jtfStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfStockKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)
+                && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfStockKeyTyped
+
+    private void jtfStockKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfStockKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            btnModificar.requestFocus();
+        }
+    }//GEN-LAST:event_jtfStockKeyPressed
 
     /**
      * @param args the command line arguments
@@ -514,7 +657,6 @@ public class frmNuevaConsola extends javax.swing.JFrame {
     private javax.swing.JMenuItem RegistrarAdmin;
     private javax.swing.JPanel Toolbar;
     private javax.swing.JMenuItem VerHistorial;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnUsuario;
     private javax.swing.ButtonGroup buttonGroup1;
