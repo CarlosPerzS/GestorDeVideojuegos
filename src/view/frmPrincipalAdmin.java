@@ -167,6 +167,11 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         btnUsuario.addActionListener(this::btnUsuarioActionPerformed);
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoGris.png"))); // NOI18N
+        lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogoMouseClicked(evt);
+            }
+        });
 
         jLabel9.setBackground(new java.awt.Color(35, 57, 91));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 20)); // NOI18N
@@ -464,6 +469,13 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void lblLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoMouseClicked
+        // TODO add your handling code here:
+        frmRegistroAdministrador ventana = new frmRegistroAdministrador();
+        ventana.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblLogoMouseClicked
 
     /**
      * @param args the command line arguments

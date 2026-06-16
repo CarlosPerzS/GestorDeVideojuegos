@@ -72,8 +72,8 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Toolbar = new javax.swing.JPanel();
         btnUsuario = new javax.swing.JButton();
-        lblLogo = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -122,20 +122,20 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
         btnUsuario.setFocusTraversalPolicyProvider(true);
         btnUsuario.addActionListener(this::btnUsuarioActionPerformed);
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoGris.png"))); // NOI18N
-
         jLabel9.setBackground(new java.awt.Color(35, 57, 91));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(94, 117, 158));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("~ADMINISTRADOR~");
 
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoGris.png"))); // NOI18N
+
         javax.swing.GroupLayout ToolbarLayout = new javax.swing.GroupLayout(Toolbar);
         Toolbar.setLayout(ToolbarLayout);
         ToolbarLayout.setHorizontalGroup(
             ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToolbarLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
@@ -145,16 +145,16 @@ public class frmNuevoVideojuego extends javax.swing.JFrame {
         );
         ToolbarLayout.setVerticalGroup(
             ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ToolbarLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToolbarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ToolbarLayout.createSequentialGroup()
-                        .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ToolbarLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel9))
-                            .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ToolbarLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel9)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
