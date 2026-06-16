@@ -41,7 +41,7 @@ public class ListaConsolas {  //Lista Enlazada
        if(busquedaValida(id)){ //es valido
            Nodo temp = origen;
            if(temp.dato.getId_Consola() == id){
-               temp = temp.siguiente;
+               origen = origen.siguiente;
            }
            else{
                 while(temp.siguiente!=null){
