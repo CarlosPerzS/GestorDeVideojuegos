@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author shari
@@ -17,6 +20,10 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
      */
     public frmPrincipalCliente() {
         initComponents();
+        
+        ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logoGris.png"));
+        Image imagenEscalada = logo.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
+        lblLogo.setIcon(new ImageIcon(imagenEscalada));
     }
 
     /**
@@ -28,21 +35,219 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        VerCompras = new javax.swing.JMenuItem();
+        LogOut = new javax.swing.JMenuItem();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaProductos = new javax.swing.JTable();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
+        btnConsolas = new javax.swing.JButton();
+        Toolbar = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        btnUsuario = new javax.swing.JButton();
+        btnVideojuegos = new javax.swing.JButton();
+        jtfBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+
+        jPopupMenu1.setToolTipText("");
+
+        VerCompras.setText("COMPRAS");
+        VerCompras.addActionListener(this::VerComprasActionPerformed);
+        jPopupMenu1.add(VerCompras);
+
+        LogOut.setText("LOG OUT");
+        LogOut.addActionListener(this::LogOutActionPerformed);
+        jPopupMenu1.add(LogOut);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jDesktopPane1.setBackground(new java.awt.Color(241, 236, 224));
+
+        TablaProductos.setBackground(new java.awt.Color(241, 250, 250));
+        TablaProductos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TablaProductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "RESULTADO"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TablaProductos);
+
+        jLabel8.setBackground(new java.awt.Color(35, 57, 91));
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(35, 57, 91));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("BUSCAR");
+
+        btnConsolas.setBackground(new java.awt.Color(200, 157, 60));
+        btnConsolas.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnConsolas.setForeground(new java.awt.Color(241, 236, 224));
+        btnConsolas.setText("CONSOLAS");
+
+        Toolbar.setBackground(new java.awt.Color(35, 57, 91));
+
+        jLabel9.setBackground(new java.awt.Color(35, 57, 91));
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(94, 117, 158));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("~USUARIO~");
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoGris.png"))); // NOI18N
+
+        btnUsuario.setBackground(new java.awt.Color(35, 57, 91));
+        btnUsuario.setForeground(new java.awt.Color(35, 57, 91));
+        btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
+        btnUsuario.setBorder(null);
+        btnUsuario.setBorderPainted(false);
+        btnUsuario.setFocusPainted(false);
+        btnUsuario.setFocusTraversalPolicyProvider(true);
+        btnUsuario.addActionListener(this::btnUsuarioActionPerformed);
+
+        javax.swing.GroupLayout ToolbarLayout = new javax.swing.GroupLayout(Toolbar);
+        Toolbar.setLayout(ToolbarLayout);
+        ToolbarLayout.setHorizontalGroup(
+            ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToolbarLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(btnUsuario)
+                .addGap(48, 48, 48))
+        );
+        ToolbarLayout.setVerticalGroup(
+            ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ToolbarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                    .addGroup(ToolbarLayout.createSequentialGroup()
+                        .addGroup(ToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 15, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        btnVideojuegos.setBackground(new java.awt.Color(200, 157, 60));
+        btnVideojuegos.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnVideojuegos.setForeground(new java.awt.Color(241, 236, 224));
+        btnVideojuegos.setText("VIDEOJUEGOS");
+
+        jtfBuscar.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jtfBuscar.setForeground(new java.awt.Color(35, 57, 91));
+
+        btnBuscar.setBackground(new java.awt.Color(241, 236, 224));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonBuscar.png"))); // NOI18N
+        btnBuscar.setBorder(null);
+        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
+
+        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jSeparator2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnConsolas, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(Toolbar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnVideojuegos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jtfBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(964, 964, 964)
+                        .addComponent(jSeparator2))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(jtfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar)
+                                .addGap(268, 268, 268)
+                                .addComponent(btnVideojuegos, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(btnConsolas, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addGap(0, 144, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(Toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnVideojuegos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConsolas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10))
+                    .addComponent(btnBuscar))
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
+        jPopupMenu1.show(btnUsuario, 0, btnUsuario.getHeight());
+    }//GEN-LAST:event_btnUsuarioActionPerformed
+
+    private void VerComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerComprasActionPerformed
+        frmCompras ventana = new frmCompras();
+        ventana.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_VerComprasActionPerformed
+
+    private void LogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutActionPerformed
+        frmLogin ventana = new frmLogin();
+        ventana.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_LogOutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +275,21 @@ public class frmPrincipalCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem LogOut;
+    private javax.swing.JTable TablaProductos;
+    private javax.swing.JPanel Toolbar;
+    private javax.swing.JMenuItem VerCompras;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnConsolas;
+    private javax.swing.JButton btnUsuario;
+    private javax.swing.JButton btnVideojuegos;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField jtfBuscar;
+    private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
 }

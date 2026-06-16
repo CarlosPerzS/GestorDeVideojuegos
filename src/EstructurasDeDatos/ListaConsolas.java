@@ -11,9 +11,9 @@ import model.Consola;
  * @author CARLO
  */
 public class ListaConsolas {  //Lista Enlazada
-    class Nodo {
-        Consola dato;
-        Nodo siguiente;
+    public class Nodo {
+        public Consola dato;
+        public Nodo siguiente;
         
         Nodo(Consola u){ 
             this.dato = u; 
@@ -21,7 +21,7 @@ public class ListaConsolas {  //Lista Enlazada
         }
     }
     
-    Nodo origen = null;
+    public Nodo origen = null;
     
     public void agregar(Consola u){
         Nodo x = new Nodo(u);

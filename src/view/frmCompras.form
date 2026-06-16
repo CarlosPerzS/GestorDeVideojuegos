@@ -74,7 +74,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="494" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="575" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,13 +88,13 @@
                       <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="372" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace pref="125" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,9 +113,8 @@
               <Color blue="e0" green="ec" red="f1" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="4">
+              <Table columnCount="2" rowCount="4">
                 <Column editable="false" title="PRODUCTO" type="java.lang.String"/>
-                <Column editable="false" title="CLIENTE" type="java.lang.Object"/>
                 <Column editable="false" title="TOTAL" type="java.lang.Integer"/>
               </Table>
             </Property>
@@ -137,7 +136,7 @@
           <Color blue="5b" green="39" red="23" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="HISTORIAL GENERAL"/>
+        <Property name="text" type="java.lang.String" value="COMPRAS"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="Toolbar">
@@ -196,7 +195,7 @@
               <Color blue="9e" green="75" red="5e" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="~ADMINISTRADOR~"/>
+            <Property name="text" type="java.lang.String" value="~USUARIO~"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblLogo">

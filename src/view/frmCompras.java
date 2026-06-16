@@ -11,14 +11,14 @@ import javax.swing.ImageIcon;
  *
  * @author shari
  */
-public class frmHistorial extends javax.swing.JFrame {
+public class frmCompras extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmHistorial.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmCompras.class.getName());
 
     /**
      * Creates new form frmHistorial
      */
-    public frmHistorial() {
+    public frmCompras() {
         initComponents();
         
         ImageIcon logo = new ImageIcon(getClass().getResource("/imagenes/logoGris.png"));
@@ -68,20 +68,20 @@ public class frmHistorial extends javax.swing.JFrame {
         TablaProductos.setBackground(new java.awt.Color(241, 236, 224));
         TablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "PRODUCTO", "CLIENTE", "TOTAL"
+                "PRODUCTO", "TOTAL"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -98,7 +98,7 @@ public class frmHistorial extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(35, 57, 91));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("HISTORIAL GENERAL");
+        jLabel8.setText("COMPRAS");
 
         Toolbar.setBackground(new java.awt.Color(35, 57, 91));
 
@@ -106,7 +106,7 @@ public class frmHistorial extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(94, 117, 158));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("~ADMINISTRADOR~");
+        jLabel9.setText("~USUARIO~");
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoGris.png"))); // NOI18N
         lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,7 +167,7 @@ public class frmHistorial extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
-                .addGap(494, 494, 494))
+                .addGap(575, 575, 575))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,11 +178,11 @@ public class frmHistorial extends javax.swing.JFrame {
                         .addGap(199, 199, 199)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel8)
-                        .addGap(45, 45, 45)
+                        .addGap(49, 49, 49)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         pack();
@@ -199,7 +199,7 @@ public class frmHistorial extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarAdminActionPerformed
 
     private void VerHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerHistorialActionPerformed
-        frmHistorial ventana = new frmHistorial();
+        frmCompras ventana = new frmCompras();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_VerHistorialActionPerformed
@@ -212,7 +212,7 @@ public class frmHistorial extends javax.swing.JFrame {
 
     private void lblLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoMouseClicked
         // TODO add your handling code here:
-        frmPrincipalAdmin ventana = new frmPrincipalAdmin();
+        frmPrincipalCliente ventana = new frmPrincipalCliente();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblLogoMouseClicked
@@ -239,7 +239,7 @@ public class frmHistorial extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new frmHistorial().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new frmCompras().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
